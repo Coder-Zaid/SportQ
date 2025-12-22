@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auth Test</title>
+</head>
+<body>
+    <h1>Authentication Test</h1>
+    <button onclick="checkToken()">Check Current Token</button>
+    <button onclick="loginAsAdmin()">Login as Admin</button>
+    <button onclick="clearToken()">Clear Token</button>
+    <button onclick="testAdminAPI()">Test Admin API</button>
+    
+    <div id="output" style="margin-top: 20px; white-space: pre-wrap;"></div>
+
+    <script>
+        const backendUrl = 'http://localhost:8002';
+        
+        function log(message) {
+            document.getElementById('output').textContent += message + '\n';
+        }
+        
+        function checkToken() {
+            const token = localStorage.getItem('auth_token');
+            if (token) {
+                log('Token found: ' + token.substring(0, 50) + '...');
+                
+                // Decode token payload (without verification)
+                try {
+                    const payload = JSON.parse(atob(token.split('.')[1]));
+                    log('Token payload: ' + JSON.stringify(payload, null, 2));
+                    
+                    // Check if expired
+                    const exp = payload.exp * 1000;
+                    const now = Date.now();
+                    log('Token expires: ' + new Date(exp).toLocaleString());
+                    log('Current time: ' + new Date(now).toLocaleString());
+                    log('Token expired: ' + (now > exp));
+                } catch (e) {
+                    log('Error decoding token: ' + e.message);
+                }
+            } else {
+                log('No token found in localStorage');
+            }
+        }
+        
+        async function loginAsAdmin() {
+            try {
+                const res = await fetch(`${backendUrl}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'admin@college.edu',
+                        password: 'admin123'
+                    }),
+                });
+
+                const data = await res.json();
+                
+                if (!res.ok) {
+                    log('Login failed: ' + (data.detail || 'Unknown error'));
+                    return;
+                }
+
+                if (data.token) {
+                    localStorage.setItem('auth_token', data.token);
+                    log('Admin login successful!');
+                    log('Token stored: ' + data.token.substring(0, 50) + '...');
+                    log('User role: ' + (data.user?.role || 'unknown'));
+                } else {
+                    log('Login succeeded but no token received');
+                }
+            } catch (err) {
+                log('Network error: ' + err.message);
+            }
+        }
+        
+        function clearToken() {
+            localStorage.removeItem('auth_token');
+            log('Token cleared from localStorage');
+        }
+        
+        async function testAdminAPI() {
+            const token = localStorage.getItem('auth_token');
+            if (!token) {
+                log('No token available - please login first');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${backendUrl}/api/admin/reports`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    log('Admin API call successful!');
+                    log('Response: ' + JSON.stringify(data, null, 2));
+                } else {
+                    const errorData = await res.json();
+                    log('Admin API call failed: ' + res.status + ' ' + JSON.stringify(errorData));
+                }
+            } catch (err) {
+                log('Network error: ' + err.message);
+            }
+        }
+    </script>
+</body>
+</html>

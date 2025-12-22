@@ -1,0 +1,177 @@
+{
+  "project_name": "College Sports Facility App",
+  "design_philosophy": {
+    "persona": "E1: The Anti-AI Designer",
+    "theme": "Electric & Neon (Sporty Variant)",
+    "core_principles": [
+      "Fusion over Imitation: Mix Swiss Brutalism with Nike-style Athletics.",
+      "Emotion First: Every interaction should feel 'fast' and 'competitive'.",
+      "Content is King: Data (scores, times, prices) should look like stats on a scoreboard.",
+      "Contrast: Neon accents against deep void backgrounds."
+    ]
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Unbounded, sans-serif",
+      "body": "Inter, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "scale": {
+      "h1": "text-5xl md:text-7xl font-black tracking-tighter uppercase",
+      "h2": "text-3xl md:text-5xl font-bold tracking-tight uppercase",
+      "h3": "text-2xl md:text-3xl font-bold tracking-tight",
+      "body_lg": "text-lg leading-relaxed",
+      "body_base": "text-base leading-relaxed text-zinc-400",
+      "caption": "text-xs font-mono tracking-widest uppercase text-zinc-500"
+    },
+    "imports": [
+      "https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;700&display=swap"
+    ]
+  },
+  "colors": {
+    "palette": {
+      "background": "#09090B",
+      "foreground": "#FAFAFA",
+      "primary": "#CCFF00",
+      "primary_foreground": "#000000",
+      "secondary": "#FF4D00",
+      "secondary_foreground": "#FFFFFF",
+      "accent": "#27272A",
+      "accent_foreground": "#CCFF00",
+      "muted": "#18181B",
+      "muted_foreground": "#A1A1AA",
+      "border": "#27272A",
+      "input": "#27272A",
+      "ring": "#CCFF00"
+    },
+    "usage": {
+      "brand_gradient": "bg-gradient-to-r from-[#CCFF00] to-[#FF4D00]",
+      "glass_surface": "bg-zinc-950/70 backdrop-blur-xl border border-white/10",
+      "neon_glow": "shadow-[0_0_20px_rgba(204,255,0,0.3)]",
+      "error_state": "bg-red-500/10 border-red-500/50 text-red-500"
+    }
+  },
+  "layout": {
+    "spacing_system": {
+      "container_padding": "p-6 md:p-12",
+      "section_gap": "gap-8 md:gap-16",
+      "internal_card_padding": "p-6"
+    },
+    "grid_strategies": {
+      "dashboard": "grid grid-cols-1 md:grid-cols-4 gap-4",
+      "marketing": "grid grid-cols-1 md:grid-cols-12 gap-8",
+      "mobile_list": "flex flex-col gap-3"
+    },
+    "border_radius": {
+      "buttons": "rounded-sm",
+      "cards": "rounded-2xl",
+      "inputs": "rounded-lg"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#CCFF00] text-black font-black uppercase tracking-wide hover:bg-[#B3E600] hover:scale-[1.02] transition-all duration-200 shadow-[0_0_15px_rgba(204,255,0,0.4)] rounded-sm",
+      "secondary": "bg-zinc-800 text-white font-bold hover:bg-zinc-700 border border-zinc-700 rounded-sm",
+      "ghost": "text-zinc-400 hover:text-[#CCFF00] hover:bg-zinc-900/50"
+    },
+    "cards": {
+      "default": "bg-zinc-900/50 border border-zinc-800/50 backdrop-blur-md rounded-2xl p-6 hover:border-[#CCFF00]/30 transition-colors duration-300",
+      "highlight": "bg-zinc-900 border border-[#CCFF00] shadow-[0_0_30px_rgba(204,255,0,0.1)] rounded-2xl p-6 relative overflow-hidden"
+    },
+    "inputs": {
+      "default": "bg-zinc-950 border-zinc-800 focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00] text-white placeholder:text-zinc-600 rounded-lg h-12"
+    },
+    "navigation": {
+      "mobile_bottom_bar": "fixed bottom-0 left-0 right-0 h-20 bg-zinc-950/90 backdrop-blur-xl border-t border-zinc-800 flex justify-around items-center z-50",
+      "desktop_sidebar": "fixed left-0 top-0 h-full w-64 bg-zinc-950 border-r border-zinc-800 p-6 flex flex-col gap-4"
+    }
+  },
+  "visual_enhancers": {
+    "textures": {
+      "noise": "bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none fixed inset-0 z-0",
+      "grid_lines": "bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+    },
+    "effects": {
+      "glass": "backdrop-blur-xl bg-black/40 border border-white/10",
+      "neon_text": "drop-shadow-[0_0_10px_rgba(204,255,0,0.5)]"
+    }
+  },
+  "motion": {
+    "transitions": {
+      "default": "transition-all duration-300 ease-out",
+      "hover": "hover:-translate-y-1 hover:shadow-lg"
+    },
+    "animations": {
+      "fade_in": "animate-in fade-in duration-500",
+      "slide_up": "animate-in slide-in-from-bottom-4 duration-500",
+      "pulse_slow": "animate-pulse duration-[3000ms]"
+    }
+  },
+  "image_urls": {
+    "hero": [
+      {
+        "url": "https://images.unsplash.com/photo-1763893312677-f408d814a244?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHw0fHxiYXNrZXRiYWxsJTIwcGxheWVyJTIwZHVua2luZyUyMG5lb24lMjBsaWdodHN8ZW58MHx8fHwxNzY0ODE3MzgwfDA&ixlib=rb-4.1.0&q=85",
+        "category": "hero_basketball",
+        "description": "Neon lit basketball player dunking - High energy hero"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1761286753856-2f39b4413c1c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwyfHx0ZW5uaXMlMjBwbGF5ZXIlMjBzZXJ2aW5nJTIwYWN0aW9uJTIwZGFyayUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzY0ODE3MzgyfDA&ixlib=rb-4.1.0&q=85",
+        "category": "hero_tennis",
+        "description": "Tennis player serving in dark environment - Dramatic hero"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1728583887690-f45b15222108?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwc3R1ZGVudHMlMjBwbGF5aW5nJTIwZm9vdGJhbGwlMjBhY3Rpb24lMjBzaG90JTIwbmlnaHR8ZW58MHx8fHwxNzY0ODE3Mzc3fDA&ixlib=rb-4.1.0&q=85",
+        "category": "hero_football",
+        "description": "Football team on field at night - Community vibe"
+      }
+    ],
+    "gear": [
+      {
+        "url": "https://images.unsplash.com/photo-1552984418-b55abf780dd4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwyfHxiYXNrZXRiYWxsJTIwcGxheWVyJTIwZHVua2luZyUyMG5lb24lMjBsaWdodHN8ZW58MHx8fHwxNzY0ODE3MzgwfDA&ixlib=rb-4.1.0&q=85",
+        "category": "gear_basketball",
+        "description": "Basketball hoop detail"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1661474973381-130596c650c4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHx0ZW5uaXMlMjBwbGF5ZXIlMjBzZXJ2aW5nJTIwYWN0aW9uJTIwZGFyayUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzY0ODE3MzgyfDA&ixlib=rb-4.1.0&q=85",
+        "category": "gear_tennis",
+        "description": "Tennis racket close up"
+      }
+    ],
+    "students": [
+      {
+        "url": "https://images.unsplash.com/photo-1601898997181-fa1d3f02e517?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwc3R1ZGVudCUyMHBvcnRyYWl0JTIwc21pbGluZyUyMGJhY2twYWNrfGVufDB8fHx8MTc2NDgxNzM4N3ww&ixlib=rb-4.1.0&q=85",
+        "category": "student_id_1",
+        "description": "Female student portrait for ID card"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1628257489884-bdf3bbbf7785?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwzfHxjb2xsZWdlJTIwc3R1ZGVudCUyMHBvcnRyYWl0JTIwc21pbGluZyUyMGJhY2twYWNrfGVufDB8fHx8MTc2NDgxNzM4N3ww&ixlib=rb-4.1.0&q=85",
+        "category": "student_id_2",
+        "description": "Student portrait with cap"
+      }
+    ]
+  },
+  "icons": {
+    "library": "lucide-react",
+    "style": "Stroke width 1.5px, sharp edges where possible",
+    "installation": "npm install lucide-react"
+  },
+  "instructions_to_main_agent": [
+    "1. INSTALL FONTS: Add the Google Fonts import to index.css immediately.",
+    "2. CONFIGURE TAILWIND: Update tailwind.config.js with the 'colors' and 'fontFamily' defined above. Extend the theme, do not overwrite.",
+    "3. GLOBAL CSS: Add the 'noise' texture to the body in index.css.",
+    "4. COMPONENT OVERRIDES: When using Shadcn components, manually override the rounded classes to match 'rounded-sm' for buttons and 'rounded-2xl' for cards.",
+    "5. DATA-TESTID: Every interactive element (Button, Input, Select) MUST have a data-testid attribute (e.g., data-testid='login-submit-btn').",
+    "6. MOBILE FIRST: Always design for 375px width first. Use 'hidden md:block' for desktop-only elements.",
+    "7. NO GRADIENT TEXT: Do not use gradient text on buttons. Use solid high-contrast colors.",
+    "8. USE SONNER: For all notifications, use the 'sonner' library.",
+    "9. AVOID DEFAULT SCROLLBAR: Customize the scrollbar to be thin and dark (zinc-800)."
+  ],
+  "universal_guidelines": [
+    "Do not use 'Inter' for headings. Use 'Unbounded'.",
+    "Do not use purple or teal for CTAs. Use Neon Lime (#CCFF00).",
+    "Always add 'hover:text-black' when hovering over a primary button.",
+    "Use 2-3x more spacing than typical designs. 'p-8' is the new 'p-4'.",
+    "Never center everything. Asymmetry creates tension.",
+    "Images must not exceed 80vh on mobile."
+  ]
+}

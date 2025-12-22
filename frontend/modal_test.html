@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modal Test</title>
+    <style>
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+        
+        .modal-content {
+            background: #111111;
+            border-radius: 18px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.80);
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            overflow: hidden;
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 8px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .close-button:hover {
+            background: #2A2A2A;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="openModal()">Open Modal</button>
+    
+    <div id="modal-container"></div>
+
+    <script>
+        function openModal() {
+            const modalContainer = document.getElementById('modal-container');
+            modalContainer.innerHTML = `
+                <div class="modal-backdrop" onclick="handleBackdropClick(event)">
+                    <div class="modal-content" onclick="event.stopPropagation()">
+                        <button class="close-button" onclick="closeModal()">×</button>
+                        <div style="padding: 24px;">
+                            <h2>Test Modal</h2>
+                            <p>This is a test modal to verify the X button functionality.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function closeModal() {
+            const modalContainer = document.getElementById('modal-container');
+            modalContainer.innerHTML = '';
+        }
+        
+        function handleBackdropClick(event) {
+            if (event.target === event.currentTarget) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
