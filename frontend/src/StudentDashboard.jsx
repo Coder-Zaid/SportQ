@@ -336,8 +336,8 @@ function StudentDashboard() {
                       <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0" style={{ background: 'linear-gradient(45deg, #1A1A1A, #2A2A2A)' }}>
                         <img 
                           src={
+                            rental.gear_name?.toLowerCase().includes('basketball') ? '/images/equipment/basketball.jpg' :
                             rental.gear_name?.toLowerCase().includes('tennis') ? 'https://images.unsplash.com/photo-1581588667945-13abf4db4a58?w=100&h=100&fit=crop' :
-                            rental.gear_name?.toLowerCase().includes('basketball') ? 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=100&h=100&fit=crop' :
                             rental.gear_name?.toLowerCase().includes('badminton') ? 'https://images.unsplash.com/photo-1579504137364-ef0f3c6a7e2c?w=100&h=100&fit=crop' :
                             rental.gear_name?.toLowerCase().includes('football') ? 'https://images.unsplash.com/photo-1579504137364-ef0f3c6a7e2c?w=100&h=100&fit=crop' :
                             rental.gear_name?.toLowerCase().includes('cricket') ? 'https://images.unsplash.com/photo-1521205050117-aaae1fcac0d5?w=100&h=100&fit=crop' :

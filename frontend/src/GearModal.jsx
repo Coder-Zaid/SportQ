@@ -117,15 +117,15 @@ function GearModal({ gear, onClose, onGearUpdate }) {
         >
           <img 
             src={gear.image_url || (
+              gear.name.toLowerCase().includes('basketball') ? '/images/equipment/basketball.jpg' :
+              gear.name.toLowerCase().includes('tennis') ? 'https://images.unsplash.com/photo-1581588667945-13abf4db4a58?w=400&h=300&fit=crop' :
               gear.name.toLowerCase().includes('badminton') ? '/images/equipment/badminton.webp' :
               gear.name.toLowerCase().includes('cricket') ? '/images/equipment/cricket-bat.webp' :
               gear.name.toLowerCase().includes('football') ? '/images/equipment/football.jpg' :
-              gear.name.toLowerCase().includes('tennis') ? '/images/equipment/racket.webp' :
               gear.name.toLowerCase().includes('volleyball') ? '/images/equipment/volleyball.webp' :
-              gear.name.toLowerCase().includes('basketball') ? 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=300&fit=crop' :
               gear.name.toLowerCase().includes('swimming') ? 'https://images.unsplash.com/photo-1530543787849-128d94430c6b?w=400&h=300&fit=crop' :
               gear.name.toLowerCase().includes('gym') ? 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=300&fit=crop' :
-              gear.name.toLowerCase().includes('table tennis') ? 'https://images.unsplash.com/photo-1552667466-07770ae110d0?w=400&h=300&fit=crop' :
+              gear.name.toLowerCase().includes('table tennis') ? 'https://images.unsplash.com/photo-1552667466-07770ae110d?w=400&h=300&fit=crop' :
               gear.name.toLowerCase().includes('squash') ? 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop' :
               gear.name.toLowerCase().includes('chess') ? 'https://images.unsplash.com/photo-1522748335274-9a3f7e2e6e76?w=400&h=300&fit=crop' :
               gear.name.toLowerCase().includes('carrom') ? 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop' :

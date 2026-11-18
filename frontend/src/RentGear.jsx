@@ -41,13 +41,14 @@ function RentGear({ gearItems, loading, error, onGearUpdate }) {
   }
 
   // Filter out test products and unwanted items
+  // But keep valid gear items that have images
   const filteredGearItems = gearItems.filter(gear => 
     !gear.name.toLowerCase().includes('test') && 
     !gear.name.toLowerCase().includes('zaid') &&
     !gear.name.toLowerCase().includes('sample') &&
-    !gear.name.toLowerCase().includes('demo')
+    !gear.name.toLowerCase().includes('demo') &&
+    gear.stock > 0  // Only show items that have stock
   );
-
   return (
     <div className="min-h-screen bg-dark-bg text-white relative overflow-hidden">
       <div className="fixed inset-0 bg-grid opacity-40 pointer-events-none" />
@@ -97,7 +98,9 @@ function RentGear({ gearItems, loading, error, onGearUpdate }) {
                     const name = gear.name.toLowerCase();
                     
                     // Use local images when available, otherwise use database URLs
-                    if (name.includes('badminton')) {
+                    if (name.includes('basketball')) {
+                      imagePath = '/images/equipment/basketball.jpg';
+                    } else if (name.includes('badminton')) {
                       imagePath = '/images/equipment/badminton.webp';
                     } else if (name.includes('cricket')) {
                       imagePath = '/images/equipment/cricket-bat.webp';

@@ -167,7 +167,13 @@ function TurfPicker() {
         }),
       });
 
+      console.log('Booking response status:', res.status);
+      console.log('Booking response ok:', res.ok);
+      console.log('Booking response headers:', res.headers);
+
       const result = await res.json();
+      console.log('Booking response body:', result);
+
       if (res.ok) {
         alert(result.message || `Booking request submitted for ${selectedTurf.name} on slots: ${selectedSlots.join(', ')}. Waiting for admin approval.`);
         setSelectedSlots([]);

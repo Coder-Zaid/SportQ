@@ -1,5 +1,6 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Request, Header, Depends
 from fastapi.responses import JSONResponse
+from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -26,12 +27,19 @@ db = client[os.environ['DB_NAME']]
 JWT_SECRET = os.environ.get('JWT_SECRET')
 SUBSCRIPTION_PRICE = float(os.environ.get('SUBSCRIPTION_PRICE', '99.99'))
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup code (if any)
+    yield
+    # Shutdown code
+    client.close()
+
+app = FastAPI(lifespan=lifespan)
 
 # Add CORS middleware before defining routes
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=["*"],  # Allow all origins for development
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -388,7 +396,7 @@ async def create_booking(req: CreateBookingRequest, current_user: dict = Depends
         'timestamp': datetime.now(timezone.utc).isoformat()
     })
     
-    return {'message': 'Booking request submitted successfully. Waiting for admin approval.', 'bookings': booking_records}
+    return {'message': 'Booking request submitted successfully. Waiting for admin approval.', 'bookings': []}
 
 
 @api_router.post("/bookings/{booking_id}/cancel")
@@ -911,6 +919,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    client.close()
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8002)
